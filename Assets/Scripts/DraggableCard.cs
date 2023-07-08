@@ -16,17 +16,18 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     private Sprite[] _cardTypeSprite;
 
     [SerializeField]
-    private Image _cardImage;
+    private SpriteRenderer _cardImage;
 
     [SerializeField]
     private int _cardID;
     [SerializeField]
-    private int _damage;
+    private int _roomHealth;
 
     private void Start()
     {
-        _cardImage = gameObject.GetComponent<Image>();
+        _cardImage = gameObject.GetComponent<SpriteRenderer>();
         ChooseImage();
+        _roomHealth = 5;
     }
 
     public void ChooseImage()
@@ -47,7 +48,22 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         //if the tag is palladin and the card type is the specific room then deal damage
         if (collision.tag == "Paladin" && _cardID == 0)
         {
-
+            collision.GetComponent<Hero>().TakeDamage(_roomHealth);
+            _roomHealth--;
+        }
+        if (collision.tag == "Rogue" && _cardID == 1)
+        {
+            collision.GetComponent<Hero>().TakeDamage(_roomHealth);
+            _roomHealth--;
+        }
+        if (collision.tag == "Mage" && _cardID == 2)
+        {
+            collision.GetComponent<Hero>().TakeDamage(_roomHealth);
+            _roomHealth--;
+        }
+        else if (collision.tag == "Palladin" && _cardID != 0 || collision.tag == "Rogue" && _cardID != 1 || collision.tag == "Mage" && _cardID != 2)
+        {
+            _roomHealth--;
         }
     }
 
