@@ -5,13 +5,14 @@ using UnityEngine.EventSystems;
 
 public class InventorySlot : MonoBehaviour, IDropHandler
 {
-  public void OnDrop(PointerEventData eventData)
-  {
-    if (transform.childCount == 0)
+
+
+    public void OnDrop(PointerEventData eventData)
     {
-      GameObject dropped = eventData.pointerDrag;
-      DraggableCard draggableCard = dropped.GetComponent<DraggableCard>();
-      draggableCard.parentAfterDrag = transform;
+        if (transform.childCount == 0)
+        {
+            GameObject dropped = eventData.pointerDrag;
+            DraggableCard draggableCard = dropped.GetComponent<DraggableCard>();
+        }
     }
-  }
 }
