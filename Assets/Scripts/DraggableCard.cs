@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class DraggableCard : MonoBehaviour //IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField]
     private Image _image;
@@ -23,11 +23,22 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [SerializeField]
     private int _roomHealth;
 
+    [SerializeField]
+    private bool _isPressed;
+
+    [SerializeField]
+    private Vector3 _offset;
+
     private void Start()
     {
         _cardImage = gameObject.GetComponent<SpriteRenderer>();
         ChooseImage();
         _roomHealth = 5;
+    }
+
+    private void Update()
+    {
+        IsPressed();
     }
 
     public void ChooseImage()
@@ -41,6 +52,34 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 _cardImage.sprite = _cardTypeSprite[_cardID];
                 break;
         }
+    }
+
+    private void IsPressed()
+    {
+        if (_isPressed == true)
+        {
+            Vector2 MousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+            Vector2 objPosition = Camera.main.ScreenToWorldPoint(MousePosition);
+            transform.position = objPosition;
+        }
+    }
+
+    public void SetTransform(Transform _slotTransform)
+    {
+        parentAfterDrag = _slotTransform;
+    }
+
+    private void OnMouseDown()
+    {
+        _isPressed = true;
+        Debug.Log("I PrEsSeD iT");
+    }
+
+    private void OnMouseUp()
+    {
+        _isPressed = false;
+        Debug.Log("I lEt Go");
+        transform.position = parentAfterDrag.position;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -65,27 +104,5 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             _roomHealth--;
         }
-    }
-
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        Debug.Log("Begin drag");
-        parentAfterDrag = transform.parent;
-        transform.SetParent(transform.root);
-        transform.SetAsLastSibling();
-        _image.raycastTarget = false;
-    }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-        Debug.Log("Dragging");
-        transform.position = Input.mousePosition;
-    }
-
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        Debug.Log("End drag");
-        transform.SetParent(parentAfterDrag);
-        _image.raycastTarget = true;
     }
 }

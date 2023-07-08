@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2292745644229564861}
   m_Layer: 5
   m_Name: Card
-  m_TagString: Untagged
+  m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,6 +71,8 @@ MonoBehaviour:
   _cardImage: {fileID: 0}
   _cardID: 0
   _roomHealth: 0
+  _isPressed: 0
+  _offset: {x: 0, y: 0, z: 0}
 --- !u!114 &1631945223831103167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,7 +119,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.81667686, y: -0.7483088}
+  m_Offset: {x: -0.14944863, y: 0.05375743}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -128,7 +130,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.56323767, y: 1.7999904}
+  m_Size: {x: 4.682941, y: 6.466557}
   m_EdgeRadius: 0
 --- !u!212 &2292745644229564861
 SpriteRenderer:
