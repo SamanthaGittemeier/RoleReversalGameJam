@@ -46,7 +46,7 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //if the tag is palladin and the card type is the specific room then deal damage
-        if (collision.tag == "Paladin" && _cardID == 0)
+        if (collision.tag == "Palladin" && _cardID == 0)
         {
             collision.GetComponent<Hero>().TakeDamage(_roomHealth);
             _roomHealth--;

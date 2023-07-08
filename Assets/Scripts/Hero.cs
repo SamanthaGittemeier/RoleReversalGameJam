@@ -20,6 +20,11 @@ public class Hero : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.right * _heroSpeed * Time.deltaTime);
+        if (_heroHealth <= 0)
+        {
+            Debug.Log("Hero Is Dead");
+            _heroSpeed = 0;
+        }
     }
 
     public void TakeDamage(int Damage)
