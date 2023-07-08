@@ -43,7 +43,10 @@ public class DraggableCard : MonoBehaviour //IBeginDragHandler, IDragHandler, IE
     private void Update()
     {
         IsPressed();
-        _roomHealthText.text = _roomHealth.ToString();
+        if (_roomHealthText != null)
+        {
+            _roomHealthText.text = _roomHealth.ToString();
+        }
     }
 
     public void ChooseImage()
