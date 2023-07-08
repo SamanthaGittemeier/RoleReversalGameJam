@@ -13,6 +13,34 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [SerializeField]
     private Transform parentAfterDrag;
 
+    [SerializeField]
+    private Sprite[] _cardTypeSprite;
+
+    [SerializeField]
+    private Image _cardImage;
+
+    [SerializeField]
+    private int _cardID;
+
+    private void Start()
+    {
+        _cardImage = gameObject.GetComponent<Image>();
+        ChooseImage();
+    }
+
+    public void ChooseImage()
+    {
+        switch (_cardID)
+        {
+            case 0:
+                _cardImage.sprite = _cardTypeSprite[_cardID];
+                break;
+            case 1:
+                _cardImage.sprite = _cardTypeSprite[_cardID];
+                break;
+        }
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         Debug.Log("Begin drag");
