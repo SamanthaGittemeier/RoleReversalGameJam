@@ -7,6 +7,7 @@ TagManager:
   - Palladin
   - Slot
   - Card
+  - Hero
   layers:
   - Default
   - TransparentFX

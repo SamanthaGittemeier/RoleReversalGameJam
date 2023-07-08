@@ -8,6 +8,17 @@ public class Hero : MonoBehaviour
     private int _heroHealth;
     [SerializeField]
     private int _heroSpeed;
+    [SerializeField]
+    private int _randomID;
+
+    [SerializeField]
+    private SpriteRenderer _heroRenderer;
+
+    [SerializeField]
+    private Sprite[] _heroType;
+
+    [SerializeField]
+    private string _heroID;
 
     // Start is called before the first frame update
     void Start()
@@ -27,8 +38,30 @@ public class Hero : MonoBehaviour
         }
     }
 
+    public void AssignID(int _randomChoice)
+    {
+        _randomID = _randomChoice;
+    }
+
     public void TakeDamage(int Damage)
     {
         _heroHealth -= Damage;
+    }
+
+    public void CheckRandomizer()
+    {
+        _heroRenderer.sprite = _heroType[_randomID];
+        switch (_randomID)
+        {
+            case 0:
+                _heroID = "Palladin";
+                break;
+            case 1:
+                _heroID = "Mage";
+                break;
+            case 2:
+                _heroID = "Rogue";
+                break;
+        }
     }
 }

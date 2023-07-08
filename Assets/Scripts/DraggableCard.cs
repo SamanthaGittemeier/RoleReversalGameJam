@@ -33,6 +33,9 @@ public class DraggableCard : MonoBehaviour //IBeginDragHandler, IDragHandler, IE
     [SerializeField]
     private TMP_Text _roomHealthText;
 
+    [SerializeField]
+    private string _heroIDText;
+
     private void Start()
     {
         _cardImage = gameObject.GetComponent<SpriteRenderer>();
@@ -101,6 +104,11 @@ public class DraggableCard : MonoBehaviour //IBeginDragHandler, IDragHandler, IE
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.tag == "Hero")
+        {
+            collision.GetComponent<Hero>();
+        }
+
         //if the tag is palladin and the card type is the specific room then deal damage
         if (collision.tag == "Palladin" && _cardID == 0)
         {

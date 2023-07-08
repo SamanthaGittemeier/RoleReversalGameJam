@@ -1,42 +1,60 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Timer : MonoBehaviour
 {
-  // public float timeValue = 90;
-  // public bool timerOn = false;
+    [SerializeField]
+    private TMP_Text _timerText;
 
-  // public TextAlignment TimerTxt;
+    [SerializeField]
+    private int _timerMins;
+    [SerializeField]
+    private int _timerSecs;
 
-  // void Start()
-  // {
-  //   timerOn = true;
-  // }
+    [SerializeField]
+    private float _waitOneSecond;
+    [SerializeField]
+    private float _timerDelay;
 
-  // void Update()
-  // {
-  //   if (timerOn)
-  //   {
-  //     if (timeValue > 0)
-  //     {
-  //       timeValue -= Time.deltaTime;
-  //       updateTimer(timeValue);
-  //     }
-  //     else
-  //     {
-  //       Debug.Log("Time is UP!");
-  //       timeValue = 0;
-  //       timerOn = false;
-  //     }
-  //   }
-  // }
+    private void Start()
+    {
+        _timerText = GameObject.Find("TimerText").GetComponent<TMP_Text>();
+        _timerMins = 1;
+        _timerSecs = 31;
+        _waitOneSecond = 1;
+        _timerDelay = -1;
+    }
 
-  // void updateTimer(float currentTime)
-  // {
-  //   float minutes = Mathf.FloorToInt(currentTime / 60);
-  //   float seconds = Mathf.FloorToInt(currentTime % 60);
+    private void Update()
+    {
+        TimeText();
+    }
 
-  //   TimerTxt.text = string.Format("{0:00} : {1:00}", minutes, seconds);
-  // }
+    private void TimeText()
+    {
+        if (Time.time > _timerDelay)
+        {
+            if (_timerSecs <= 0)
+            {
+                _timerMins = 0;
+                _timerSecs = 60;
+            }
+            else if (_timerSecs > 0)
+            {
+                _timerSecs--;
+                _timerDelay = Time.time + _waitOneSecond;
+            }
+        }
+
+        if (_timerSecs >= 10)
+        {
+            _timerText.text = _timerMins.ToString() + ":" + _timerSecs.ToString();
+        }
+        else if (_timerSecs < 10)
+        {
+            _timerText.text = _timerMins.ToString() + ":0" + _timerSecs.ToString();
+        }
+    }
 }
