@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Palladin
   layers:
   - Default
   - TransparentFX
@@ -43,4 +44,7 @@ TagManager:
     locked: 0
   - name: Card
     uniqueID: 387854805
+    locked: 0
+  - name: Hero
+    uniqueID: 591037161
     locked: 0

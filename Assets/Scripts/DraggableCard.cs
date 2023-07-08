@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-
     [SerializeField]
     private Image _image;
 
@@ -21,6 +20,8 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     [SerializeField]
     private int _cardID;
+    [SerializeField]
+    private int _damage;
 
     private void Start()
     {
@@ -38,6 +39,15 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             case 1:
                 _cardImage.sprite = _cardTypeSprite[_cardID];
                 break;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //if the tag is palladin and the card type is the specific room then deal damage
+        if (collision.tag == "Paladin" && _cardID == 0)
+        {
+
         }
     }
 
