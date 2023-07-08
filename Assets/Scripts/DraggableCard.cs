@@ -51,6 +51,9 @@ public class DraggableCard : MonoBehaviour //IBeginDragHandler, IDragHandler, IE
             case 1:
                 _cardImage.sprite = _cardTypeSprite[_cardID];
                 break;
+            case 2:
+                _cardImage.sprite = _cardTypeSprite[_cardID];
+                break;
         }
     }
 
