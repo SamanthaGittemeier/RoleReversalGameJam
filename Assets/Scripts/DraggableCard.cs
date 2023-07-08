@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class DraggableCard : MonoBehaviour //IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -29,6 +30,9 @@ public class DraggableCard : MonoBehaviour //IBeginDragHandler, IDragHandler, IE
     [SerializeField]
     private Vector3 _offset;
 
+    [SerializeField]
+    private TMP_Text _roomHealthText;
+
     private void Start()
     {
         _cardImage = gameObject.GetComponent<SpriteRenderer>();
@@ -39,6 +43,7 @@ public class DraggableCard : MonoBehaviour //IBeginDragHandler, IDragHandler, IE
     private void Update()
     {
         IsPressed();
+        _roomHealthText.text = _roomHealth.ToString();
     }
 
     public void ChooseImage()
@@ -67,6 +72,11 @@ public class DraggableCard : MonoBehaviour //IBeginDragHandler, IDragHandler, IE
         }
     }
 
+    public void AssignText(TMP_Text _text)
+    {
+        _roomHealthText = _text;
+    }
+
     public void SetTransform(Transform _slotTransform)
     {
         parentAfterDrag = _slotTransform;
@@ -83,6 +93,7 @@ public class DraggableCard : MonoBehaviour //IBeginDragHandler, IDragHandler, IE
         _isPressed = false;
         Debug.Log("I lEt Go");
         transform.position = parentAfterDrag.position;
+        _roomHealthText.gameObject.SetActive(true);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
