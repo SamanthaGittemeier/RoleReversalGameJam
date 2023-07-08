@@ -66,9 +66,11 @@ MonoBehaviour:
   parentAfterDrag: {fileID: 0}
   _cardTypeSprite:
   - {fileID: 21300000, guid: 8f7590592b0214edd9988137e8e63eef, type: 3}
-  - {fileID: 21300000, guid: 54534a905c4a64c4aadfcd289045c60f, type: 3}
+  - {fileID: 21300000, guid: 4168ac8e68a9b45748e70d7d905b83ff, type: 3}
+  - {fileID: 21300000, guid: ea55a2f62bf6b4ac3ba06498c8af5c8a, type: 3}
   _cardImage: {fileID: 0}
   _cardID: 1
+  _damage: 0
 --- !u!114 &1631945223831103167
 MonoBehaviour:
   m_ObjectHideFlags: 0
