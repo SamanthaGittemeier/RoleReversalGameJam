@@ -24,6 +24,9 @@ public class Timer : MonoBehaviour
     [SerializeField]
     private GameObject[] _store;
 
+    [SerializeField]
+    private GameManager _gameManager;
+
     private void Start()
     {
         _timerText = GameObject.Find("TimerText").GetComponent<TMP_Text>();
@@ -31,6 +34,7 @@ public class Timer : MonoBehaviour
         _timerSecs = 31;
         _waitOneSecond = 1;
         _timerDelay = -1;
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     private void Update()
@@ -38,6 +42,12 @@ public class Timer : MonoBehaviour
         TimeText();
         _cards = GameObject.FindGameObjectsWithTag("Card");
         _store = GameObject.FindGameObjectsWithTag("Store Item");
+        _gameManager.GetRemaingingTimer(_timerSecs);
+    }
+
+    public void ResetTimer()
+    {
+        _timerSecs = 30;
     }
 
     private void TimeText()

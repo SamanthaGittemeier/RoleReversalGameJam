@@ -20,19 +20,23 @@ public class Boss : MonoBehaviour
   [SerializeField]
   private AudioClip[] _audioClips;
 
+    [SerializeField]
+    private GameManager _gameManager;
+
   // Start is called before the first frame update
   void Start()
   {
     _bossHealth = 10;
-    _bossHealthText = GameObject.FindWithTag("BossHealth").GetComponent<TMP_Text>();
+    _bossHealthText = GameObject.Find("BossHealth").GetComponent<TMP_Text>();
     _bossAnim = gameObject.GetComponent<Animator>();
     _audioPlayer = gameObject.GetComponent<AudioSource>();
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
   }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public void TakeDamage(int _damageAmount)

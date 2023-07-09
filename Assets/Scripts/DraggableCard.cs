@@ -129,7 +129,6 @@ public class DraggableCard : MonoBehaviour
         if (_timerAmount > 0)
         {
             _isPressed = true;
-            Debug.Log("I PrEsSeD iT");
             if (_roomHealthText != null)
             {
                 _roomHealthText.gameObject.SetActive(false);
@@ -144,7 +143,6 @@ public class DraggableCard : MonoBehaviour
     public void OnMouseUp()
     {
         _isPressed = false;
-        Debug.Log("I lEt Go");
         if (parentAfterDrag != null)
         {
             transform.position = parentAfterDrag.position;

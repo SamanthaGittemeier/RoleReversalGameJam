@@ -50,6 +50,7 @@ public class Hero : MonoBehaviour
     _givePoints = 1;
     _boss = GameObject.Find("BossCard").GetComponent<Boss>();
     _audioPlayerHero = gameObject.GetComponent<AudioSource>();
+        _heroRenderer = gameObject.GetComponent<SpriteRenderer>();
   }
 
   // Update is called once per frame
@@ -58,19 +59,20 @@ public class Hero : MonoBehaviour
     transform.Translate(Vector3.right * _heroSpeed * Time.deltaTime);
   }
 
-  public void OnHeroDeath()
-  {
-    Debug.Log("Hero Is Dead");
-    _audioPlayerHero.clip = _clipChoice[0];
-    _audioPlayerHero.Play();
-    _heroSpeed = 0;
-    _heroDeathAnimation.SetBool("HeroDied", true);
-    GameObject _blood = Instantiate(_bloodSplatPrefab, transform.position + new Vector3(-0.5f, -0.3f, 0), Quaternion.identity);
-    _gameManager.AddGold(_giveGold);
-    _gameManager.UpdateScore(_givePoints);
-    Destroy(_blood, 1.1f);
-    Destroy(gameObject, 1.5f);
-  }
+    public void OnHeroDeath()
+    {
+        Debug.Log("Hero Is Dead");
+        _audioPlayerHero.clip = _clipChoice[0];
+        _audioPlayerHero.Play();
+        _heroSpeed = 0;
+        _heroDeathAnimation.SetBool("HeroDied", true);
+        GameObject _blood = Instantiate(_bloodSplatPrefab, transform.position + new Vector3(-0.5f, -0.3f, 0), Quaternion.identity);
+        _gameManager.AddGold(_giveGold);
+        _gameManager.UpdateScore(_givePoints);
+        _gameManager.HeroDied();
+        Destroy(_blood, 1.1f);
+        Destroy(gameObject, 1.5f);
+    }
 
   public void AssignID(int _randomChoice)
   {
