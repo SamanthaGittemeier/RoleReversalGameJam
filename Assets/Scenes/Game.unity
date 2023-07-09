@@ -2703,23 +2703,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1631945223831103163, guid: 8f7b40a17ead48c47a2c90d735bd3bed, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1631945223831103163, guid: 8f7b40a17ead48c47a2c90d735bd3bed, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1631945223831103163, guid: 8f7b40a17ead48c47a2c90d735bd3bed, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1631945223831103163, guid: 8f7b40a17ead48c47a2c90d735bd3bed, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.25
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 1631945223831103163, guid: 8f7b40a17ead48c47a2c90d735bd3bed, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -3.77
+      value: -3.36
       objectReference: {fileID: 0}
     - target: {fileID: 1631945223831103163, guid: 8f7b40a17ead48c47a2c90d735bd3bed, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2736,6 +2736,10 @@ PrefabInstance:
     - target: {fileID: 1631945223831103164, guid: 8f7b40a17ead48c47a2c90d735bd3bed, type: 3}
       propertyPath: _cardID
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1631945223831103164, guid: 8f7b40a17ead48c47a2c90d735bd3bed, type: 3}
+      propertyPath: _roomHealth
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2292745644229564861, guid: 8f7b40a17ead48c47a2c90d735bd3bed, type: 3}
       propertyPath: m_SortingLayer

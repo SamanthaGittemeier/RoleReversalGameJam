@@ -42,7 +42,7 @@ public class DraggableCard : MonoBehaviour //IBeginDragHandler, IDragHandler, IE
     {
         _cardImage = gameObject.GetComponent<SpriteRenderer>();
         ChooseImage();
-        _roomHealth = 5;
+        _roomHealth = 1;
     }
 
     private void Update()
@@ -51,6 +51,15 @@ public class DraggableCard : MonoBehaviour //IBeginDragHandler, IDragHandler, IE
         if (_roomHealthText != null)
         {
             _roomHealthText.text = _roomHealth.ToString();
+        }
+
+        if (_roomHealth <= 0)
+        {
+            transform.Translate(Vector3.down * 3 * Time.deltaTime);
+            if (transform.position.y <= -7)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 
@@ -78,6 +87,15 @@ public class DraggableCard : MonoBehaviour //IBeginDragHandler, IDragHandler, IE
             Vector2 objPosition = Camera.main.ScreenToWorldPoint(MousePosition);
             transform.position = objPosition;
         }
+    }
+
+    IEnumerator ShakeCard()
+    {
+        transform.Rotate(new Vector3(0, 0, -7) * 5 * Time.deltaTime);
+        yield return new WaitForSeconds(.1f);
+        transform.Rotate(new Vector3(0, 0, 7) * 5 * Time.deltaTime);
+        yield return new WaitForSeconds(.1f);
+        StartCoroutine(ShakeCard());
     }
 
     public void AssignText(TMP_Text _text)
@@ -113,10 +131,18 @@ public class DraggableCard : MonoBehaviour //IBeginDragHandler, IDragHandler, IE
             {
                 collision.GetComponent<Hero>().TakeDamage(_roomHealth);
                 _roomHealth--;
+                if (_roomHealth <= 0)
+                {
+                    StartCoroutine(ShakeCard());
+                }
             }
             else if (_heroID != _cardID)
             {
                 _roomHealth--;
+                if (_roomHealth <= 0)
+                {
+                    StartCoroutine(ShakeCard());
+                }
             }
         }
     }

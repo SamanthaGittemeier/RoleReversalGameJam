@@ -21,7 +21,7 @@ public class Timer : MonoBehaviour
     private void Start()
     {
         _timerText = GameObject.Find("TimerText").GetComponent<TMP_Text>();
-        _timerMins = 1;
+        _timerMins = 0;
         _timerSecs = 31;
         _waitOneSecond = 1;
         _timerDelay = -1;
