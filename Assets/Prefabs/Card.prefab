@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8148411538500758806}
   - component: {fileID: 3251888419030417447}
   - component: {fileID: 2292745644229564861}
+  - component: {fileID: 8134172594563365956}
   m_Layer: 5
   m_Name: Card
   m_TagString: Card
@@ -71,8 +72,11 @@ MonoBehaviour:
   _cardImage: {fileID: 0}
   _cardID: 0
   _roomHealth: 0
+  _heroID: 0
   _isPressed: 0
   _offset: {x: 0, y: 0, z: 0}
+  _roomHealthText: {fileID: 0}
+  _heroIDText: 
 --- !u!114 &1631945223831103167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,3 +188,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &8134172594563365956
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631945223831103160}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ff6d3b61651354b419c341245b01d6e4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
