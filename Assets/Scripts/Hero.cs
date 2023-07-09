@@ -33,6 +33,9 @@ public class Hero : MonoBehaviour
     [SerializeField]
     private GameManager _gameManager;
 
+    [SerializeField]
+    private Boss _boss;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +45,7 @@ public class Hero : MonoBehaviour
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         _giveGold = 5;
         _givePoints = 1;
+        _boss = GameObject.Find("BossCard").GetComponent<Boss>();
     }
 
     // Update is called once per frame
@@ -90,6 +94,16 @@ public class Hero : MonoBehaviour
             case 2:
                 _heroID = "Mage";
                 break;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Boss")
+        {
+            _heroSpeed = 0;
+            Debug.Log("At Boss");
+            _boss.TakeDamage(_heroHealth);
         }
     }
 }

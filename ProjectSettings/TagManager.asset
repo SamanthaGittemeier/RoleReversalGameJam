@@ -9,6 +9,7 @@ TagManager:
   - Card
   - Hero
   - Store Item
+  - Boss
   layers:
   - Default
   - TransparentFX
