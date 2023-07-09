@@ -66,6 +66,11 @@ public class DraggableCard : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
+
+        if (_timerAmount <= 0)
+        {
+            OnMouseUp();
+        }
     }
 
     public void GetTimer(int _timerSeconds)
