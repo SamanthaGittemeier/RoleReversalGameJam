@@ -134,6 +134,10 @@ public class DraggableCard : MonoBehaviour
             {
                 _roomHealthText.gameObject.SetActive(false);
             }
+            if (parentAfterDrag != null)
+            {
+                parentAfterDrag.gameObject.SetActive(true);
+            }
         }
     }
 
@@ -144,6 +148,7 @@ public class DraggableCard : MonoBehaviour
         if (parentAfterDrag != null)
         {
             transform.position = parentAfterDrag.position;
+            parentAfterDrag.gameObject.SetActive(false);
             _roomHealthText.gameObject.SetActive(true);
             if (_cardID != 3)
             {
@@ -219,12 +224,14 @@ public class DraggableCard : MonoBehaviour
                         Destroy(this.gameObject);
                         collision.GetComponent<DraggableCard>()._cardImage.sprite = _cardTypeSprite[4];
                         collision.GetComponent<DraggableCard>()._cardID = 4;
+                        parentAfterDrag.gameObject.SetActive(true);
                     }
                     if (collision.GetComponent<DraggableCard>()._cardID == 2)
                     {
                         Destroy(this.gameObject);
                         collision.GetComponent<DraggableCard>()._cardImage.sprite = _cardTypeSprite[5];
                         collision.GetComponent<DraggableCard>()._cardID = 5;
+                        parentAfterDrag.gameObject.SetActive(true);
                     }
                 }
                 if (this.gameObject.GetComponent<DraggableCard>()._cardID == 1)
@@ -234,12 +241,14 @@ public class DraggableCard : MonoBehaviour
                         Destroy(this.gameObject);
                         collision.GetComponent<DraggableCard>()._cardImage.sprite = _cardTypeSprite[4];
                         collision.GetComponent<DraggableCard>()._cardID = 4;
+                        parentAfterDrag.gameObject.SetActive(true);
                     }
                     if (collision.GetComponent<DraggableCard>()._cardID == 2)
                     {
                         Destroy(this.gameObject);
                         collision.GetComponent<DraggableCard>()._cardImage.sprite = _cardTypeSprite[6];
                         collision.GetComponent<DraggableCard>()._cardID = 6;
+                        parentAfterDrag.gameObject.SetActive(true);
                     }
                 }
                 if (this.gameObject.GetComponent<DraggableCard>()._cardID == 2)
@@ -249,12 +258,14 @@ public class DraggableCard : MonoBehaviour
                         Destroy(this.gameObject);
                         collision.GetComponent<DraggableCard>()._cardImage.sprite = _cardTypeSprite[5];
                         collision.GetComponent<DraggableCard>()._cardID = 5;
+                        parentAfterDrag.gameObject.SetActive(true);
                     }
                     if (collision.GetComponent<DraggableCard>()._cardID == 1)
                     {
                         Destroy(this.gameObject);
                         collision.GetComponent<DraggableCard>()._cardImage.sprite = _cardTypeSprite[6];
                         collision.GetComponent<DraggableCard>()._cardID = 6;
+                        parentAfterDrag.gameObject.SetActive(true);
                     }
                 }
             }
