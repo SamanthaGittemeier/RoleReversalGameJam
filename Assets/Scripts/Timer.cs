@@ -35,6 +35,7 @@ public class Timer : MonoBehaviour
         _waitOneSecond = 1;
         _timerDelay = -1;
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        _gameManager.GetRemaingingTimer(_timerSecs);
     }
 
     private void Update()

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Boss : MonoBehaviour
 {
@@ -20,23 +21,24 @@ public class Boss : MonoBehaviour
   [SerializeField]
   private AudioClip[] _audioClips;
 
-    [SerializeField]
-    private GameManager _gameManager;
+    void Start()
+    {
+        _bossHealth = 10;
+        _bossHealthText = GameObject.Find("BossHealth").GetComponent<TMP_Text>();
+        _bossAnim = gameObject.GetComponent<Animator>();
+        _audioPlayer = gameObject.GetComponent<AudioSource>();
+        _bossHealthText.text = _bossHealth.ToString();
+    }
 
-  // Start is called before the first frame update
-  void Start()
-  {
-    _bossHealth = 10;
-    _bossHealthText = GameObject.Find("BossHealth").GetComponent<TMP_Text>();
-    _bossAnim = gameObject.GetComponent<Animator>();
-    _audioPlayer = gameObject.GetComponent<AudioSource>();
-        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-  }
-
-    // Update is called once per frame
     void Update()
     {
         
+    }
+
+    IEnumerator LoadEndScene()
+    {
+        yield return new WaitForSeconds(2.5f);
+        SceneManager.LoadScene("EndGame");
     }
 
     public void TakeDamage(int _damageAmount)
@@ -48,7 +50,8 @@ public class Boss : MonoBehaviour
             _bossAnim.SetBool("BossDead", true);
             _audioPlayer.clip = _audioClips[0];
             _audioPlayer.Play();
-            Destroy(this.gameObject, 2.5f);
+            StartCoroutine(LoadEndScene());
+            Destroy(this.gameObject, 3f);
         }
         else if (_bossHealth > 0)
         {

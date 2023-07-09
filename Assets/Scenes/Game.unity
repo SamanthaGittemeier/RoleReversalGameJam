@@ -141,12 +141,16 @@ MonoBehaviour:
   _score: 0
   _spawnedHeroes: 0
   _waveSize: 0
+  _previousWave: 0
   _timerSecondsLeft: 0
+  _totalSpawned: 0
+  _spawnNextHero: 0
   _goldText: {fileID: 0}
   _scoreText: {fileID: 0}
   _store: []
   _heroes: []
   _heroPrefab: {fileID: 3672887160216226915, guid: 371544904d9b3f34992e129322b08994, type: 3}
+  _boss: {fileID: 0}
   _nextHeroIcon: {fileID: 0}
   _nextHeroImage:
   - {fileID: 21300000, guid: 0409a10cc7cf04e20a048f1dbb9ac3b9, type: 3}
@@ -1253,7 +1257,7 @@ RectTransform:
   m_GameObject: {fileID: 381983248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.015, y: 0.015, z: 0.015}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 752435667}
@@ -1261,7 +1265,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -404.5, y: -221.9}
+  m_AnchoredPosition: {x: -406.5, y: -221.9}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &381983250

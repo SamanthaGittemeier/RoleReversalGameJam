@@ -16,6 +16,8 @@ public class Hero : MonoBehaviour
   private int _givePoints;
     [SerializeField]
     private int _heroID;
+    [SerializeField]
+    private int _bossHealth;
 
   [SerializeField]
   private SpriteRenderer _heroRenderer;
@@ -55,11 +57,12 @@ public class Hero : MonoBehaviour
         _heroRenderer = gameObject.GetComponent<SpriteRenderer>();
   }
 
-  // Update is called once per frame
-  void Update()
-  {
-    transform.Translate(Vector3.right * _heroSpeed * Time.deltaTime);
-  }
+    // Update is called once per frame
+    void Update()
+    {
+        transform.Translate(Vector3.right * _heroSpeed * Time.deltaTime);
+        _heroRenderer.sprite = _heroType[_heroID];
+    }
 
     public void OnHeroDeath()
     {
@@ -84,7 +87,6 @@ public class Hero : MonoBehaviour
     public void AssignID(int _IDChoice)
     {
         _heroID = _IDChoice;
-        _heroRenderer.sprite = _heroType[_heroID];
     }
 
     public void TakeDamage(int Damage)
@@ -109,6 +111,7 @@ public class Hero : MonoBehaviour
             Debug.Log("At Boss");
             _boss.TakeDamage(_heroHealth);
             Destroy(this.gameObject, 2.5f);
+            OnHeroDeath();
         }
     }
 }
