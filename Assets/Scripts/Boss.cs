@@ -32,14 +32,17 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Updating Health");
         _bossHealthText.text = _bossHealth.ToString();
     }
 
     public void TakeDamage(int _damageAmount)
     {
+        Debug.Log("Hero did damage");
         _bossHealth -= _damageAmount;
         if (_bossHealth <= 0)
         {
+            Debug.Log("I died");
             _bossAnim.SetBool("BossDead", true);
             _audioPlayer.clip = _audioClips[0];
             _audioPlayer.Play();
@@ -47,6 +50,7 @@ public class Boss : MonoBehaviour
         }
         else if (_bossHealth > 0)
         {
+            Debug.Log("He got me!");
             _audioPlayer.clip = _audioClips[1];
             _audioPlayer.Play();
             StartCoroutine(ResetDamageAnimation());

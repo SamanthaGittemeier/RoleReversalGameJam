@@ -68,6 +68,7 @@ public class Hero : MonoBehaviour
         GameObject _blood = Instantiate(_bloodSplatPrefab, transform.position + new Vector3(-0.5f, -0.3f, 0), Quaternion.identity);
         _gameManager.AddGold(_giveGold);
         _gameManager.UpdateScore(_givePoints);
+        _gameManager.HeroDied();
         Destroy(_blood, 1.1f);
         Destroy(gameObject, 1.5f);
     }
@@ -103,7 +104,6 @@ public class Hero : MonoBehaviour
             _heroSpeed = 0;
             Debug.Log("At Boss");
             _boss.TakeDamage(_heroHealth);
-            //Destroy(this.gameObject, 2.5f);
         }
     }
 }
