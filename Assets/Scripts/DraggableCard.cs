@@ -130,6 +130,10 @@ public class DraggableCard : MonoBehaviour
         {
             _isPressed = true;
             Debug.Log("I PrEsSeD iT");
+            if (_roomHealthText != null)
+            {
+                _roomHealthText.gameObject.SetActive(false);
+            }
         }
     }
 
