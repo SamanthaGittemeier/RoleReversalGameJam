@@ -36,6 +36,12 @@ public class Hero : MonoBehaviour
     [SerializeField]
     private Boss _boss;
 
+    [SerializeField]
+    private AudioSource _audioPlayerHero;
+
+    [SerializeField]
+    private AudioClip[] _clipChoice;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +52,7 @@ public class Hero : MonoBehaviour
         _giveGold = 5;
         _givePoints = 1;
         _boss = GameObject.Find("BossCard").GetComponent<Boss>();
+        _audioPlayerHero = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -57,6 +64,8 @@ public class Hero : MonoBehaviour
     public void OnHeroDeath()
     {
         Debug.Log("Hero Is Dead");
+        _audioPlayerHero.clip = _clipChoice[0];
+        _audioPlayerHero.Play();
         _heroSpeed = 0;
         _heroDeathAnimation.SetBool("HeroDied", true);
         GameObject _blood = Instantiate(_bloodSplatPrefab, transform.position + new Vector3(-0.5f, -0.3f, 0), Quaternion.identity);
@@ -77,6 +86,11 @@ public class Hero : MonoBehaviour
         if (_heroHealth <= 0)
         {
             OnHeroDeath();
+        }
+        else if (_heroHealth > 0)
+        {
+            _audioPlayerHero.clip = _clipChoice[1];
+            _audioPlayerHero.Play();
         }
     }
 

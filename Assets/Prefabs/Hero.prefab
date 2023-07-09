@@ -116,6 +116,10 @@ MonoBehaviour:
   _heroDeathAnimation: {fileID: 0}
   _gameManager: {fileID: 0}
   _boss: {fileID: 0}
+  _audioPlayerHero: {fileID: 0}
+  _clipChoice:
+  - {fileID: 8300000, guid: c88ef6d37c28141d397abcd3e02f5ecc, type: 3}
+  - {fileID: 8300000, guid: d176cf78ffadb46a492f7b7267789b63, type: 3}
 --- !u!50 &3672887160216226919
 Rigidbody2D:
   serializedVersion: 4
