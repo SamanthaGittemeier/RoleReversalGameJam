@@ -44,6 +44,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Timer _timer;
 
+    [SerializeField]
+    private bool _firstWave;
+    [SerializeField]
+    private bool _timerUp;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +60,7 @@ public class GameManager : MonoBehaviour
         _timer = GameObject.Find("TimerText").GetComponent<Timer>();
         _waveSize = 1;
         _boss = GameObject.Find("BossCard");
+        _firstWave = true;
     }
 
     // Update is called once per frame
@@ -70,7 +76,7 @@ public class GameManager : MonoBehaviour
         }
         if (_timerSecondsLeft <= 0)
         {
-            SpawnNextHero();
+            _timerUp = true;
         }
     }
 
@@ -83,31 +89,37 @@ public class GameManager : MonoBehaviour
     {
         if (_boss != null)
         {
-            //if no heroes in array and spawned heroes is not equal to the wave size
-            if (_heroes.Length == 0 && _spawnedHeroes != _waveSize)
+            if (_timerUp == true)
             {
-                //make a new hero choice
-                _randomChoice = Random.Range(0, 3);
-                //spawn the new hero using above choice
-                GameObject _newHero = Instantiate(_heroPrefab, new Vector3(-6, 0.5f, 0), Quaternion.identity);
-                //choose upcoming hero choice
-                _upcomingHero = Random.Range(0, 3);
-                //use correct image for next hero choice
-                _nextHeroIcon.sprite = _nextHeroImage[_upcomingHero];
-                //from spawned hero tell it to choose right image
-                _newHero.GetComponent<Hero>().CheckRandomizer();
-                //up the spawned heroes count
-                _spawnedHeroes++;
-            }
-            //else if the heroes array is empty and the spawned heroes is equal to the wave size
-            else if (_heroes.Length == 0 && _spawnedHeroes == _waveSize)
-            {
-                //reset the timer
-                _timer.ResetTimer();
-                //set new wave size to be same as before plus one
-                _waveSize = _waveSize++;
-                //call to spawn again
-                SpawnNextHero();
+                if (_firstWave == true)
+                {
+                    _randomChoice = Random.Range(0, 3);
+                    GameObject _newHero = Instantiate(_heroPrefab, new Vector3(-6, 0.5f, 0), Quaternion.identity);
+                    _upcomingHero = Random.Range(0, 3);
+                    _nextHeroIcon.sprite = _nextHeroImage[_upcomingHero];
+                    _newHero.GetComponent<Hero>().AssignID(_randomChoice);
+                    _spawnedHeroes++;
+                    _firstWave = false;
+                }
+                else if (_firstWave == false && _heroes.Length == 0 && _spawnedHeroes != _waveSize)
+                {
+                    _randomChoice = _upcomingHero;
+                    GameObject _newHero = Instantiate(_heroPrefab, new Vector3(-6, 0.5f, 0), Quaternion.identity);
+                    _upcomingHero = Random.Range(0, 3);
+                    _nextHeroIcon.sprite = _nextHeroImage[_upcomingHero];
+                    _newHero.GetComponent<Hero>().AssignID(_randomChoice);
+                    _spawnedHeroes++;
+                }
+                //else if the heroes array is empty and the spawned heroes is equal to the wave size
+                else if (_heroes.Length == 0 && _spawnedHeroes == _waveSize)
+                {
+                    //reset the timer
+                    _timer.ResetTimer();
+                    //set new wave size to be same as before plus one
+                    _waveSize = _waveSize++;
+                    //call to spawn again
+                    SpawnNextHero();
+                }
             }
         }
     }

@@ -176,7 +176,7 @@ public class DraggableCard : MonoBehaviour
         {
             _roomPlayer.clip = _clips[_cardID];
             _roomPlayer.Play();
-            collision.GetComponent<Hero>().AssignID(_heroID);
+            collision.GetComponent<Hero>().GetHeroID(_heroID);
             if (_heroID == _cardID)
             {
                 collision.GetComponent<Hero>().TakeDamage(_roomHealth);

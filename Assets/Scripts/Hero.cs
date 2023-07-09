@@ -14,6 +14,8 @@ public class Hero : MonoBehaviour
   private int _giveGold;
   [SerializeField]
   private int _givePoints;
+    [SerializeField]
+    private int _heroID;
 
   [SerializeField]
   private SpriteRenderer _heroRenderer;
@@ -74,10 +76,16 @@ public class Hero : MonoBehaviour
         Destroy(gameObject, 1.5f);
     }
 
-  public void AssignID(int _randomChoice)
+  public void GetHeroID(int _randomChoice)
   {
     _randomID = _randomChoice;
   }
+
+    public void AssignID(int _IDChoice)
+    {
+        _heroID = _IDChoice;
+        _heroRenderer.sprite = _heroType[_heroID];
+    }
 
     public void TakeDamage(int Damage)
     {
@@ -91,11 +99,6 @@ public class Hero : MonoBehaviour
             _audioPlayerHero.clip = _clipChoice[1];
             _audioPlayerHero.Play();
         }
-    }
-
-    public void CheckRandomizer()
-    {
-        _heroRenderer.sprite = _heroType[_randomID];
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
