@@ -77,9 +77,9 @@ public class Hero : MonoBehaviour
     _randomID = _randomChoice;
   }
 
-  public void TakeDamage(int Damage)
-  {
-    _heroHealth -= Damage;
+    public void TakeDamage(int Damage)
+    {
+        _heroHealth -= Damage;
         if (_heroHealth <= 0)
         {
             OnHeroDeath();
@@ -89,7 +89,7 @@ public class Hero : MonoBehaviour
             _audioPlayerHero.clip = _clipChoice[1];
             _audioPlayerHero.Play();
         }
-  }
+    }
 
     public void OnHeroDeath()
     {
