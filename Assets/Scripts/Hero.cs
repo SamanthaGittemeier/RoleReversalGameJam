@@ -91,47 +91,6 @@ public class Hero : MonoBehaviour
         }
     }
 
-    public void OnHeroDeath()
-    {
-        Debug.Log("Hero Is Dead");
-        _audioPlayerHero.clip = _clipChoice[0];
-        _audioPlayerHero.Play();
-        _heroSpeed = 0;
-        _heroDeathAnimation.SetBool("HeroDied", true);
-        GameObject _blood = Instantiate(_bloodSplatPrefab, transform.position + new Vector3(-0.5f, -0.3f, 0), Quaternion.identity);
-        _gameManager.AddGold(_giveGold);
-        _gameManager.UpdateScore(_givePoints);
-        _gameManager.HeroDied();
-        Destroy(_blood, 1.1f);
-        Destroy(gameObject, 1.5f);
-    }
-
-  public void CheckRandomizer()
-  {
-    _heroRenderer.sprite = _heroType[_randomID];
-  }
-
-  private void OnTriggerEnter2D(Collider2D collision)
-  {
-    if (collision.tag == "Boss")
-    {
-        _randomID = _randomChoice;
-    }
-
-    public void TakeDamage(int Damage)
-    {
-        _heroHealth -= Damage;
-        if (_heroHealth <= 0)
-        {
-            OnHeroDeath();
-        }
-        else if (_heroHealth > 0)
-        {
-            _audioPlayerHero.clip = _clipChoice[1];
-            _audioPlayerHero.Play();
-        }
-    }
-
     public void CheckRandomizer()
     {
         _heroRenderer.sprite = _heroType[_randomID];
@@ -144,12 +103,7 @@ public class Hero : MonoBehaviour
             _heroSpeed = 0;
             Debug.Log("At Boss");
             _boss.TakeDamage(_heroHealth);
+            Destroy(this.gameObject, 2.5f);
         }
-
-      _heroSpeed = 0;
-      Debug.Log("At Boss");
-      _boss.TakeDamage(_heroHealth);
-      Destroy(this.gameObject, 2.5f);
     }
-  }
 }
