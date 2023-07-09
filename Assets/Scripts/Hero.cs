@@ -22,9 +22,6 @@ public class Hero : MonoBehaviour
     private Sprite[] _heroType;
 
     [SerializeField]
-    private string _heroID;
-
-    [SerializeField]
     private GameObject _bloodSplatPrefab;
 
     [SerializeField]
@@ -97,18 +94,6 @@ public class Hero : MonoBehaviour
     public void CheckRandomizer()
     {
         _heroRenderer.sprite = _heroType[_randomID];
-        switch (_randomID)
-        {
-            case 0:
-                _heroID = "Palladin";
-                break;
-            case 1:
-                _heroID = "Rogue";
-                break;
-            case 2:
-                _heroID = "Mage";
-                break;
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

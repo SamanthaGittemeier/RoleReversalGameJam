@@ -145,8 +145,17 @@ public class DraggableCard : MonoBehaviour
         {
             transform.position = parentAfterDrag.position;
             _roomHealthText.gameObject.SetActive(true);
-            _roomPlayer.clip = _clips[4];
-            _roomPlayer.Play();
+            if (_cardID != 3)
+            {
+                _roomPlayer.clip = _clips[4];
+                _roomPlayer.Play();
+            }
+            else if (_cardID == 3)
+            {
+                _roomPlayer.clip = _clips[3];
+                _roomPlayer.Play();
+                Destroy(this.gameObject, 1f);
+            }
         }
     }
 
@@ -173,6 +182,16 @@ public class DraggableCard : MonoBehaviour
                 {
                     StartCoroutine(ShakeCard());
                 }
+            }
+        }
+
+        if (collision.tag == "Card" && _isPressed == false)
+        {
+            if (_cardID == 3)
+            {
+                collision.GetComponent<DraggableCard>()._roomHealth++;
+                _roomPlayer.clip = _clips[3];
+                _roomPlayer.Play();
             }
         }
     }
