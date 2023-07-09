@@ -10,6 +10,10 @@ public class Hero : MonoBehaviour
     private int _heroSpeed;
     [SerializeField]
     private int _randomID;
+    [SerializeField]
+    private int _giveGold;
+    [SerializeField]
+    private int _givePoints;
 
     [SerializeField]
     private SpriteRenderer _heroRenderer;
@@ -35,6 +39,9 @@ public class Hero : MonoBehaviour
         _heroHealth = 5;
         _heroSpeed = 3;
         _heroDeathAnimation = gameObject.GetComponent<Animator>();
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        _giveGold = 5;
+        _givePoints = 1;
         //test
         //_randomID = Random.Range(0, 3);
     }
@@ -51,6 +58,8 @@ public class Hero : MonoBehaviour
         _heroSpeed = 0;
         _heroDeathAnimation.SetBool("HeroDied", true);
         GameObject _blood = Instantiate(_bloodSplatPrefab, transform.position + new Vector3(-0.5f, -0.3f, 0), Quaternion.identity);
+        _gameManager.AddGold(_giveGold);
+        _gameManager.UpdateScore(_givePoints);
         Destroy(_blood, 1.1f);
         Destroy(gameObject, 1.5f);
     }

@@ -10,6 +10,9 @@ public class Store : MonoBehaviour
     [SerializeField]
     private GameObject _roomPrefab;
 
+    [SerializeField]
+    private int _currentGold;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,10 +25,15 @@ public class Store : MonoBehaviour
         
     }
 
+    public void UpdateGold(int _goldAmount)
+    {
+        _currentGold = _goldAmount;
+    }
+
     private void OnMouseDown()
     {
         GameObject _newRoom = Instantiate(_roomPrefab, transform.position, Quaternion.identity);
         _newRoom.GetComponent<DraggableCard>().AssignCardID(_cardTypeID);
-        _newRoom.GetComponent<DraggableCard>().WasSpawned();
+        _newRoom.GetComponent<DraggableCard>().OnMouseDown();
     }
 }

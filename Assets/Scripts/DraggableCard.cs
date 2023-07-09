@@ -42,7 +42,7 @@ public class DraggableCard : MonoBehaviour //IBeginDragHandler, IDragHandler, IE
     {
         _cardImage = gameObject.GetComponent<SpriteRenderer>();
         ChooseImage();
-        _roomHealth = 1;
+        _roomHealth = 5;
     }
 
     private void Update()
@@ -71,21 +71,6 @@ public class DraggableCard : MonoBehaviour //IBeginDragHandler, IDragHandler, IE
     public void ChooseImage()
     {
         _cardImage.sprite = _cardTypeSprite[_cardID];
-        //switch (_cardID)
-        //{
-        //    case 0:
-        //        _cardImage.sprite = _cardTypeSprite[_cardID];
-        //        break;
-        //    case 1:
-        //        _cardImage.sprite = _cardTypeSprite[_cardID];
-        //        break;
-        //    case 2:
-        //        _cardImage.sprite = _cardTypeSprite[_cardID];
-        //        break;
-        //    case 3:
-        //        _cardImage.sprite = _cardTypeSprite[_cardID];
-        //        break;
-        //}
     }
 
     private void IsPressed()
@@ -117,13 +102,7 @@ public class DraggableCard : MonoBehaviour //IBeginDragHandler, IDragHandler, IE
         parentAfterDrag = _slotTransform;
     }
 
-    public void WasSpawned()
-    {
-        _isPressed = true;
-        Debug.Log("Spawned from Store");
-    }
-
-    private void OnMouseDown()
+    public void OnMouseDown()
     {
         _isPressed = true;
         Debug.Log("I PrEsSeD iT");
