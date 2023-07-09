@@ -46,7 +46,7 @@ public class Hero : MonoBehaviour
     void Start()
     {
         _heroHealth = 5;
-        _heroSpeed = 3;
+        _heroSpeed = 1;
         _heroDeathAnimation = gameObject.GetComponent<Animator>();
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         _giveGold = 5;

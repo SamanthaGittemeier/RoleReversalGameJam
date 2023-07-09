@@ -43,11 +43,18 @@ public class DraggableCard : MonoBehaviour
     [SerializeField]
     private Timer _timer;
 
+    [SerializeField]
+    private AudioSource _roomPlayer;
+
+    [SerializeField]
+    private AudioClip[] _clips;
+
     private void Start()
     {
         _cardImage = gameObject.GetComponent<SpriteRenderer>();
         ChooseImage();
         _roomHealth = 5;
+        _roomPlayer = gameObject.GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -134,6 +141,8 @@ public class DraggableCard : MonoBehaviour
         {
             transform.position = parentAfterDrag.position;
             _roomHealthText.gameObject.SetActive(true);
+            _roomPlayer.clip = _clips[4];
+            _roomPlayer.Play();
         }
     }
 
@@ -141,6 +150,8 @@ public class DraggableCard : MonoBehaviour
     {
         if (collision.tag == "Hero")
         {
+            _roomPlayer.clip = _clips[_cardID];
+            _roomPlayer.Play();
             collision.GetComponent<Hero>().AssignID(_heroID);
             if (_heroID == _cardID)
             {

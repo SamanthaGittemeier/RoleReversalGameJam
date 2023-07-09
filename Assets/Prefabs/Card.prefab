@@ -79,6 +79,13 @@ MonoBehaviour:
   _roomHealthText: {fileID: 0}
   _heroIDText: 
   _timer: {fileID: 0}
+  _roomPlayer: {fileID: 0}
+  _clips:
+  - {fileID: 8300000, guid: c3da69021df4842c5b15d94209542fd1, type: 3}
+  - {fileID: 8300000, guid: 7c1fca2cd63c44093990db702a042fc6, type: 3}
+  - {fileID: 8300000, guid: ac92b0e18edef4558a2f4f709955f1ab, type: 3}
+  - {fileID: 8300000, guid: cdadc2e0b2e7343619b330f92caea309, type: 3}
+  - {fileID: 8300000, guid: 93d536c3497fe42318e341802125c6ad, type: 3}
 --- !u!50 &8148411538500758806
 Rigidbody2D:
   serializedVersion: 4
