@@ -51,3 +51,6 @@ TagManager:
   - name: Hero
     uniqueID: 591037161
     locked: 0
+  - name: Blood
+    uniqueID: 1391778645
+    locked: 0
