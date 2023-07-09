@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1631945223831103163}
   - component: {fileID: 1631945223831103165}
   - component: {fileID: 1631945223831103164}
-  - component: {fileID: 1631945223831103167}
   - component: {fileID: 8148411538500758806}
   - component: {fileID: 3251888419030417447}
   - component: {fileID: 2292745644229564861}
@@ -74,22 +73,12 @@ MonoBehaviour:
   _cardID: 0
   _roomHealth: 0
   _heroID: 0
+  _timerAmount: 0
   _isPressed: 0
   _offset: {x: 0, y: 0, z: 0}
   _roomHealthText: {fileID: 0}
   _heroIDText: 
---- !u!114 &1631945223831103167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1631945223831103160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29c38c1ddc44544eebd9b40c36b0fc3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _timer: {fileID: 0}
 --- !u!50 &8148411538500758806
 Rigidbody2D:
   serializedVersion: 4

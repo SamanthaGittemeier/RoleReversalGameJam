@@ -42,8 +42,6 @@ public class Hero : MonoBehaviour
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         _giveGold = 5;
         _givePoints = 1;
-        //test
-        //_randomID = Random.Range(0, 3);
     }
 
     // Update is called once per frame

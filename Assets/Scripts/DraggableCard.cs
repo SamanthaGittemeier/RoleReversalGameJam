@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
-public class DraggableCard : MonoBehaviour //IBeginDragHandler, IDragHandler, IEndDragHandler
+public class DraggableCard : MonoBehaviour
 {
     [SerializeField]
     private Image _image;
@@ -25,11 +25,11 @@ public class DraggableCard : MonoBehaviour //IBeginDragHandler, IDragHandler, IE
     private int _roomHealth;
     [SerializeField]
     private int _heroID;
+    [SerializeField]
+    private int _timerAmount;
 
     [SerializeField]
     private bool _isPressed;
-    [SerializeField]
-    private bool _isTimerGoing;
 
     [SerializeField]
     private Vector3 _offset;
@@ -68,9 +68,9 @@ public class DraggableCard : MonoBehaviour //IBeginDragHandler, IDragHandler, IE
         }
     }
 
-    public void TimerGoing(bool _isGoing)
+    public void GetTimer(int _timerSeconds)
     {
-        _isTimerGoing = _isGoing;
+        _timerAmount = _timerSeconds;
     }
 
     public void AssignCardID(int _storeID)
@@ -114,13 +114,11 @@ public class DraggableCard : MonoBehaviour //IBeginDragHandler, IDragHandler, IE
 
     public void OnMouseDown()
     {
-        if (_isTimerGoing == true)
+        if (_timerAmount > 0)
         {
             _isPressed = true;
             Debug.Log("I PrEsSeD iT");
         }
-        //_isPressed = true;
-        //Debug.Log("I PrEsSeD iT");
     }
 
     public void OnMouseUp()
@@ -131,10 +129,6 @@ public class DraggableCard : MonoBehaviour //IBeginDragHandler, IDragHandler, IE
         {
             transform.position = parentAfterDrag.position;
             _roomHealthText.gameObject.SetActive(true);
-        }
-        else if (parentAfterDrag == null)
-        {
-            transform.position = transform.position;
         }
     }
 

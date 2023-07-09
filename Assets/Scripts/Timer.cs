@@ -19,9 +19,6 @@ public class Timer : MonoBehaviour
     private float _timerDelay;
 
     [SerializeField]
-    private bool _isTimerStillGoing;
-
-    [SerializeField]
     private GameObject[] _cards;
 
     [SerializeField]
@@ -34,13 +31,13 @@ public class Timer : MonoBehaviour
         _timerSecs = 31;
         _waitOneSecond = 1;
         _timerDelay = -1;
-        _cards = GameObject.FindGameObjectsWithTag("Card");
-        _store = GameObject.FindGameObjectsWithTag("Store Item");
     }
 
     private void Update()
     {
         TimeText();
+        _cards = GameObject.FindGameObjectsWithTag("Card");
+        _store = GameObject.FindGameObjectsWithTag("Store Item");
     }
 
     private void TimeText()
@@ -51,30 +48,26 @@ public class Timer : MonoBehaviour
             {
                 _timerMins = 0;
                 _timerSecs = 0;
-                _isTimerStillGoing = false;
                 foreach (GameObject C in _cards)
                 {
-                    //C.GetComponent<DraggableCard>().TimerGoing(_isTimerStillGoing);
-                    C.GetComponent<DraggableCard>().OnMouseUp();
+                    C.GetComponent<DraggableCard>().GetTimer(_timerSecs);
                 }
                 foreach (GameObject SI in _store)
                 {
-                    SI.GetComponent<Store>().IsTimerGoing(_isTimerStillGoing);
+                    SI.GetComponent<Store>().TimerAmount(_timerSecs);
                 }
             }
             else if (_timerSecs > 0)
             {
                 _timerSecs--;
                 _timerDelay = Time.time + _waitOneSecond;
-                _isTimerStillGoing = true;
                 foreach (GameObject C in _cards)
                 {
-                    //C.GetComponent<DraggableCard>().TimerGoing(_isTimerStillGoing);
-                    C.GetComponent<DraggableCard>().OnMouseDown();
+                    C.GetComponent<DraggableCard>().GetTimer(_timerSecs);
                 }
                 foreach (GameObject SI in _store)
                 {
-                    SI.GetComponent<Store>().IsTimerGoing(_isTimerStillGoing);
+                    SI.GetComponent<Store>().TimerAmount(_timerSecs);
                 }
             }
         }
