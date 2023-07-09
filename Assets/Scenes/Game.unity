@@ -3653,6 +3653,7 @@ GameObject:
   - component: {fileID: 1913581005}
   - component: {fileID: 1913581004}
   - component: {fileID: 1913581006}
+  - component: {fileID: 1913581007}
   m_Layer: 5
   m_Name: BossCard
   m_TagString: Boss
@@ -3815,6 +3816,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bossHealth: 0
   _bossHealthText: {fileID: 0}
+--- !u!95 &1913581007
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913580999}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 651270017ce3fd447bf717cfcdb7fc96, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1931933357
 GameObject:
   m_ObjectHideFlags: 0
