@@ -80,18 +80,17 @@ public class Hero : MonoBehaviour
   public void TakeDamage(int Damage)
   {
     _heroHealth -= Damage;
-    if (_heroHealth <= 0)
-    {
-      OnHeroDeath();
-    }
-    else if (_heroHealth > 0)
-    {
-      _audioPlayerHero.clip = _clipChoice[1];
-      _audioPlayerHero.Play();
-    }
+        if (_heroHealth <= 0)
+        {
+            OnHeroDeath();
+        }
+        else if (_heroHealth > 0)
+        {
+            _audioPlayerHero.clip = _clipChoice[1];
+            _audioPlayerHero.Play();
+        }
   }
 
-<<<<<<< HEAD
     public void OnHeroDeath()
     {
         Debug.Log("Hero Is Dead");
@@ -106,18 +105,16 @@ public class Hero : MonoBehaviour
         Destroy(_blood, 1.1f);
         Destroy(gameObject, 1.5f);
     }
-=======
+
   public void CheckRandomizer()
   {
     _heroRenderer.sprite = _heroType[_randomID];
   }
->>>>>>> 0646a456f63961783d4cdca195caa858fd773854
 
   private void OnTriggerEnter2D(Collider2D collision)
   {
     if (collision.tag == "Boss")
     {
-<<<<<<< HEAD
         _randomID = _randomChoice;
     }
 
@@ -148,12 +145,11 @@ public class Hero : MonoBehaviour
             Debug.Log("At Boss");
             _boss.TakeDamage(_heroHealth);
         }
-=======
+
       _heroSpeed = 0;
       Debug.Log("At Boss");
       _boss.TakeDamage(_heroHealth);
       Destroy(this.gameObject, 2.5f);
->>>>>>> 0646a456f63961783d4cdca195caa858fd773854
     }
   }
 }

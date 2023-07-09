@@ -39,27 +39,23 @@ public class Boss : MonoBehaviour
   {
     _bossHealth -= _damageAmount;
     _bossHealthText.text = _bossHealth.ToString();
-    if (_bossHealth <= 0)
-    {
-      _bossAnim.SetBool("BossDead", true);
-      _audioPlayer.clip = _audioClips[0];
-      _audioPlayer.Play();
-      Destroy(this.gameObject, 2.5f);
-    }
-    else if (_bossHealth > 0)
-    {
-<<<<<<< HEAD
-        Debug.Log("Updating Health");
-        _bossHealthText.text = _bossHealth.ToString();
-=======
-      _audioPlayer.clip = _audioClips[1];
-      _audioPlayer.Play();
-      StartCoroutine(ResetDamageAnimation());
->>>>>>> 0646a456f63961783d4cdca195caa858fd773854
-    }
+        if (_bossHealth <= 0)
+        {
+            _bossAnim.SetBool("BossDead", true);
+            _audioPlayer.clip = _audioClips[0];
+            _audioPlayer.Play();
+            Destroy(this.gameObject, 2.5f);
+        }
+        else if (_bossHealth > 0)
+        {
+            Debug.Log("Updating Health");
+            _bossHealthText.text = _bossHealth.ToString();
+            _audioPlayer.clip = _audioClips[1];
+            _audioPlayer.Play();
+            StartCoroutine(ResetDamageAnimation());
+        }
   }
 
-<<<<<<< HEAD
     public void TakeDamage(int _damageAmount)
     {
         Debug.Log("Hero did damage");
@@ -87,12 +83,11 @@ public class Boss : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         _bossAnim.SetBool("BossDamage", false);
     }
-=======
-  IEnumerator ResetDamageAnimation()
-  {
-    _bossAnim.SetBool("BossDamage", true);
-    yield return new WaitForSeconds(0.5f);
-    _bossAnim.SetBool("BossDamage", false);
-  }
->>>>>>> 0646a456f63961783d4cdca195caa858fd773854
+
+    IEnumerator ResetDamageAnimation()
+    {
+        _bossAnim.SetBool("BossDamage", true);
+        yield return new WaitForSeconds(0.5f);
+        _bossAnim.SetBool("BossDamage", false);
+    }
 }
