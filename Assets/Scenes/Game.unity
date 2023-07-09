@@ -294,16 +294,22 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e4462cb599ad68027e32d4257dbe5f993835b7b4
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -400.01, y: -225.04001}
   m_SizeDelta: {x: -0.019989014, y: 0.08000183}
+<<<<<<< HEAD
 =======
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -793.45, y: -4.5000153}
   m_SizeDelta: {x: 1.9500122, y: 1.9900055}
 >>>>>>> 0cfd03ca7f5b65db3fc6a65d9fa286a1bf0954b8
+=======
+>>>>>>> e4462cb599ad68027e32d4257dbe5f993835b7b4
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &102808814
 MonoBehaviour:
@@ -2314,6 +2320,7 @@ MonoBehaviour:
   _waitOneSecond: 0
   _timerDelay: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 --- !u!1 &1846169252
 GameObject:
@@ -2405,6 +2412,8 @@ RectTransform:
   m_SizeDelta: {x: 44.239998, y: 22.228012}
   m_Pivot: {x: 0.5, y: 0.5}
 >>>>>>> 0cfd03ca7f5b65db3fc6a65d9fa286a1bf0954b8
+=======
+>>>>>>> e4462cb599ad68027e32d4257dbe5f993835b7b4
 --- !u!1001 &1883304566
 PrefabInstance:
   m_ObjectHideFlags: 0
