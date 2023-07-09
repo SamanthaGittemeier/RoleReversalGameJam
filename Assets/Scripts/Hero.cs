@@ -26,6 +26,9 @@ public class Hero : MonoBehaviour
     [SerializeField]
     private Animator _heroDeathAnimation;
 
+    [SerializeField]
+    private GameManager _gameManager;
+
     // Start is called before the first frame update
     void Start()
     {

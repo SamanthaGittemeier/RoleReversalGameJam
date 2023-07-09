@@ -63,20 +63,29 @@ public class DraggableCard : MonoBehaviour //IBeginDragHandler, IDragHandler, IE
         }
     }
 
+    public void AssignCardID(int _storeID)
+    {
+        _cardID = _storeID;
+    }
+
     public void ChooseImage()
     {
-        switch (_cardID)
-        {
-            case 0:
-                _cardImage.sprite = _cardTypeSprite[_cardID];
-                break;
-            case 1:
-                _cardImage.sprite = _cardTypeSprite[_cardID];
-                break;
-            case 2:
-                _cardImage.sprite = _cardTypeSprite[_cardID];
-                break;
-        }
+        _cardImage.sprite = _cardTypeSprite[_cardID];
+        //switch (_cardID)
+        //{
+        //    case 0:
+        //        _cardImage.sprite = _cardTypeSprite[_cardID];
+        //        break;
+        //    case 1:
+        //        _cardImage.sprite = _cardTypeSprite[_cardID];
+        //        break;
+        //    case 2:
+        //        _cardImage.sprite = _cardTypeSprite[_cardID];
+        //        break;
+        //    case 3:
+        //        _cardImage.sprite = _cardTypeSprite[_cardID];
+        //        break;
+        //}
     }
 
     private void IsPressed()
@@ -106,6 +115,12 @@ public class DraggableCard : MonoBehaviour //IBeginDragHandler, IDragHandler, IE
     public void SetTransform(Transform _slotTransform)
     {
         parentAfterDrag = _slotTransform;
+    }
+
+    public void WasSpawned()
+    {
+        _isPressed = true;
+        Debug.Log("Spawned from Store");
     }
 
     private void OnMouseDown()
