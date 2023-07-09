@@ -159,6 +159,14 @@ public class DraggableCard : MonoBehaviour
         }
     }
 
+    private void CheckRoomHealth()
+    {
+        if (_roomHealth <= 0)
+        {
+            StartCoroutine(ShakeCard());
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Hero")
@@ -170,19 +178,27 @@ public class DraggableCard : MonoBehaviour
             {
                 collision.GetComponent<Hero>().TakeDamage(_roomHealth);
                 _roomHealth--;
-                if (_roomHealth <= 0)
-                {
-                    StartCoroutine(ShakeCard());
-                }
             }
             else if (_heroID != _cardID)
             {
                 _roomHealth--;
-                if (_roomHealth <= 0)
+                if (_heroID == 0 && _cardID == 4 || _heroID == 0 && _cardID == 5)
                 {
-                    StartCoroutine(ShakeCard());
+                    collision.GetComponent<Hero>().TakeDamage(_roomHealth);
+                    _roomHealth--;
+                }
+                if (_heroID == 1 && _cardID == 4 || _heroID == 1 && _cardID == 6)
+                {
+                    collision.GetComponent<Hero>().TakeDamage(_roomHealth);
+                    _roomHealth--;
+                }
+                if (_heroID == 2 && _cardID == 5 || _heroID == 2 && _cardID == 6)
+                {
+                    collision.GetComponent<Hero>().TakeDamage(_roomHealth);
+                    _roomHealth--;
                 }
             }
+            CheckRoomHealth();
         }
 
         if (collision.tag == "Card" && _isPressed == false)
@@ -192,6 +208,55 @@ public class DraggableCard : MonoBehaviour
                 collision.GetComponent<DraggableCard>()._roomHealth++;
                 _roomPlayer.clip = _clips[3];
                 _roomPlayer.Play();
+            }
+            if (_cardID != collision.GetComponent<DraggableCard>()._cardID)
+            {
+                Debug.Log(_cardID + "combined with" + collision.GetComponent<DraggableCard>()._cardID);
+                if (this.gameObject.GetComponent<DraggableCard>()._cardID == 0)
+                {
+                    if (collision.GetComponent<DraggableCard>()._cardID == 1)
+                    {
+                        Destroy(this.gameObject);
+                        collision.GetComponent<DraggableCard>()._cardImage.sprite = _cardTypeSprite[4];
+                        collision.GetComponent<DraggableCard>()._cardID = 4;
+                    }
+                    if (collision.GetComponent<DraggableCard>()._cardID == 2)
+                    {
+                        Destroy(this.gameObject);
+                        collision.GetComponent<DraggableCard>()._cardImage.sprite = _cardTypeSprite[5];
+                        collision.GetComponent<DraggableCard>()._cardID = 5;
+                    }
+                }
+                if (this.gameObject.GetComponent<DraggableCard>()._cardID == 1)
+                {
+                    if (collision.GetComponent<DraggableCard>()._cardID == 0)
+                    {
+                        Destroy(this.gameObject);
+                        collision.GetComponent<DraggableCard>()._cardImage.sprite = _cardTypeSprite[4];
+                        collision.GetComponent<DraggableCard>()._cardID = 4;
+                    }
+                    if (collision.GetComponent<DraggableCard>()._cardID == 2)
+                    {
+                        Destroy(this.gameObject);
+                        collision.GetComponent<DraggableCard>()._cardImage.sprite = _cardTypeSprite[6];
+                        collision.GetComponent<DraggableCard>()._cardID = 6;
+                    }
+                }
+                if (this.gameObject.GetComponent<DraggableCard>()._cardID == 2)
+                {
+                    if (collision.GetComponent<DraggableCard>()._cardID == 0)
+                    {
+                        Destroy(this.gameObject);
+                        collision.GetComponent<DraggableCard>()._cardImage.sprite = _cardTypeSprite[5];
+                        collision.GetComponent<DraggableCard>()._cardID = 5;
+                    }
+                    if (collision.GetComponent<DraggableCard>()._cardID == 1)
+                    {
+                        Destroy(this.gameObject);
+                        collision.GetComponent<DraggableCard>()._cardImage.sprite = _cardTypeSprite[6];
+                        collision.GetComponent<DraggableCard>()._cardID = 6;
+                    }
+                }
             }
         }
     }

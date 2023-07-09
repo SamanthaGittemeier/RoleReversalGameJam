@@ -69,6 +69,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4168ac8e68a9b45748e70d7d905b83ff, type: 3}
   - {fileID: 21300000, guid: ea55a2f62bf6b4ac3ba06498c8af5c8a, type: 3}
   - {fileID: 21300000, guid: d0f1e2241f045471994a9a57636bb1c6, type: 3}
+  - {fileID: 21300000, guid: 7f96c712693324ee19eac2ea4e334587, type: 3}
+  - {fileID: 21300000, guid: 52c2de8547dd049059cdcc0af364c974, type: 3}
+  - {fileID: 21300000, guid: a50790d5d3f3e42c09487b02948d5e8e, type: 3}
   _cardImage: {fileID: 0}
   _cardID: 0
   _roomHealth: 0
