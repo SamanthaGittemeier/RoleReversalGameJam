@@ -23,6 +23,8 @@ public class DraggableCard : MonoBehaviour //IBeginDragHandler, IDragHandler, IE
     private int _cardID;
     [SerializeField]
     private int _roomHealth;
+    [SerializeField]
+    private int _heroID;
 
     [SerializeField]
     private bool _isPressed;
@@ -106,28 +108,16 @@ public class DraggableCard : MonoBehaviour //IBeginDragHandler, IDragHandler, IE
     {
         if (collision.tag == "Hero")
         {
-            collision.GetComponent<Hero>();
-        }
-
-        //if the tag is palladin and the card type is the specific room then deal damage
-        if (collision.tag == "Palladin" && _cardID == 0)
-        {
-            collision.GetComponent<Hero>().TakeDamage(_roomHealth);
-            _roomHealth--;
-        }
-        if (collision.tag == "Rogue" && _cardID == 1)
-        {
-            collision.GetComponent<Hero>().TakeDamage(_roomHealth);
-            _roomHealth--;
-        }
-        if (collision.tag == "Mage" && _cardID == 2)
-        {
-            collision.GetComponent<Hero>().TakeDamage(_roomHealth);
-            _roomHealth--;
-        }
-        else if (collision.tag == "Palladin" && _cardID != 0 || collision.tag == "Rogue" && _cardID != 1 || collision.tag == "Mage" && _cardID != 2)
-        {
-            _roomHealth--;
+            collision.GetComponent<Hero>().AssignID(_heroID);
+            if (_heroID == _cardID)
+            {
+                collision.GetComponent<Hero>().TakeDamage(_roomHealth);
+                _roomHealth--;
+            }
+            else if (_heroID != _cardID)
+            {
+                _roomHealth--;
+            }
         }
     }
 }

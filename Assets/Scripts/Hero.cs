@@ -20,22 +20,36 @@ public class Hero : MonoBehaviour
     [SerializeField]
     private string _heroID;
 
+    [SerializeField]
+    private GameObject _bloodSplatPrefab;
+
+    [SerializeField]
+    private Animator _heroDeathAnimation;
+
     // Start is called before the first frame update
     void Start()
     {
         _heroHealth = 5;
         _heroSpeed = 3;
+        _heroDeathAnimation = gameObject.GetComponent<Animator>();
+        //test
+        //_randomID = Random.Range(0, 3);
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.Translate(Vector3.right * _heroSpeed * Time.deltaTime);
-        if (_heroHealth <= 0)
-        {
-            Debug.Log("Hero Is Dead");
-            _heroSpeed = 0;
-        }
+    }
+
+    public void OnHeroDeath()
+    {
+        Debug.Log("Hero Is Dead");
+        _heroSpeed = 0;
+        _heroDeathAnimation.SetBool("HeroDied", true);
+        GameObject _blood = Instantiate(_bloodSplatPrefab, transform.position + new Vector3(-0.5f, -0.3f, 0), Quaternion.identity);
+        Destroy(_blood, 1.1f);
+        Destroy(gameObject, 1.5f);
     }
 
     public void AssignID(int _randomChoice)
@@ -46,6 +60,10 @@ public class Hero : MonoBehaviour
     public void TakeDamage(int Damage)
     {
         _heroHealth -= Damage;
+        if (_heroHealth <= 0)
+        {
+            OnHeroDeath();
+        }
     }
 
     public void CheckRandomizer()
@@ -57,10 +75,10 @@ public class Hero : MonoBehaviour
                 _heroID = "Palladin";
                 break;
             case 1:
-                _heroID = "Mage";
+                _heroID = "Rogue";
                 break;
             case 2:
-                _heroID = "Rogue";
+                _heroID = "Mage";
                 break;
         }
     }
