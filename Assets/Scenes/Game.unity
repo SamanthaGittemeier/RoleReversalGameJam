@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &3453150
+--- !u!1 &14632735
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,6 +131,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+  - component: {fileID: 14632737}
+  - component: {fileID: 14632736}
+  m_Layer: 0
+  m_Name: GameManager
   - component: {fileID: 3453151}
   - component: {fileID: 3453153}
   - component: {fileID: 3453152}
@@ -167,6 +171,20 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14632735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aedda212158be80418a17ec5c06e6c2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _randomChoice: 0
+  _gold: 0
+  _score: 0
+  _goldText: {fileID: 0}
+  _scoreText: {fileID: 0}
+  _store: {fileID: 0}
+--- !u!4 &14632737
+Transform:
   m_GameObject: {fileID: 3453150}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -197,6 +215,15 @@ CanvasRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14632735}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.56027013, y: -4.2268786, z: -0.030976836}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_GameObject: {fileID: 3453150}
   m_CullTransparentMesh: 1
 --- !u!1 &20314110
@@ -291,7 +318,7 @@ GameObject:
   - component: {fileID: 24561795}
   m_Layer: 5
   m_Name: Skull Room
-  m_TagString: Untagged
+  m_TagString: Store Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -368,6 +395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardTypeID: 0
   _roomPrefab: {fileID: 1631945223831103160, guid: 8f7b40a17ead48c47a2c90d735bd3bed, type: 3}
+  _currentGold: 0
 --- !u!50 &24561795
 Rigidbody2D:
   serializedVersion: 4
@@ -450,7 +478,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -401, y: -222.75}
+  m_AnchoredPosition: {x: -402.5, y: -222.75}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &46195415
@@ -568,7 +596,7 @@ GameObject:
   - component: {fileID: 80106166}
   m_Layer: 5
   m_Name: Rogue Room
-  m_TagString: Untagged
+  m_TagString: Store Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -645,6 +673,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardTypeID: 2
   _roomPrefab: {fileID: 1631945223831103160, guid: 8f7b40a17ead48c47a2c90d735bd3bed, type: 3}
+  _currentGold: 0
 --- !u!50 &80106166
 Rigidbody2D:
   serializedVersion: 4
@@ -1014,7 +1043,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -794.5, y: -446.22}
+  m_AnchoredPosition: {x: -793.7, y: -446.22}
   m_SizeDelta: {x: 225, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &281682104
@@ -1037,7 +1066,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Score: '
+  m_text: 'Score:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 90bc0b38b328d43d7ad24b502582927b, type: 2}
   m_sharedMaterial: {fileID: 8407308356228542911, guid: 90bc0b38b328d43d7ad24b502582927b, type: 2}
@@ -1789,7 +1818,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2218130120788041819, guid: 24f079b0e7fc24b5ebfea7d097d4070c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 3.25
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2218130120788041819, guid: 24f079b0e7fc24b5ebfea7d097d4070c, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1856,8 +1885,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5826416513499646022, guid: 24f079b0e7fc24b5ebfea7d097d4070c, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5826416513499646022, guid: 24f079b0e7fc24b5ebfea7d097d4070c, type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5826416513499646022, guid: 24f079b0e7fc24b5ebfea7d097d4070c, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24f079b0e7fc24b5ebfea7d097d4070c, type: 3}
@@ -2102,7 +2139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2218130120788041819, guid: 24f079b0e7fc24b5ebfea7d097d4070c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2218130120788041819, guid: 24f079b0e7fc24b5ebfea7d097d4070c, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2169,8 +2206,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5826416513499646022, guid: 24f079b0e7fc24b5ebfea7d097d4070c, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5826416513499646022, guid: 24f079b0e7fc24b5ebfea7d097d4070c, type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5826416513499646022, guid: 24f079b0e7fc24b5ebfea7d097d4070c, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24f079b0e7fc24b5ebfea7d097d4070c, type: 3}
@@ -2209,7 +2254,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -394.5, y: -222.75}
+  m_AnchoredPosition: {x: -395, y: -222.75}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1140707970
@@ -2645,7 +2690,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -398.9, y: -222.75}
+  m_AnchoredPosition: {x: -400, y: -222.75}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1381989177
@@ -2763,7 +2808,7 @@ GameObject:
   - component: {fileID: 1393644874}
   m_Layer: 5
   m_Name: Spike Room
-  m_TagString: Untagged
+  m_TagString: Store Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2840,6 +2885,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardTypeID: 1
   _roomPrefab: {fileID: 1631945223831103160, guid: 8f7b40a17ead48c47a2c90d735bd3bed, type: 3}
+  _currentGold: 0
 --- !u!50 &1393644874
 Rigidbody2D:
   serializedVersion: 4
@@ -3057,7 +3103,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -396.85, y: -222.75}
+  m_AnchoredPosition: {x: -397.5, y: -222.75}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1513369059
@@ -3469,7 +3515,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2218130120788041819, guid: 24f079b0e7fc24b5ebfea7d097d4070c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1.25
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 2218130120788041819, guid: 24f079b0e7fc24b5ebfea7d097d4070c, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3536,8 +3582,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5826416513499646022, guid: 24f079b0e7fc24b5ebfea7d097d4070c, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5826416513499646022, guid: 24f079b0e7fc24b5ebfea7d097d4070c, type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5826416513499646022, guid: 24f079b0e7fc24b5ebfea7d097d4070c, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24f079b0e7fc24b5ebfea7d097d4070c, type: 3}
@@ -3577,7 +3631,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 6.2, y: 0.5}
+  m_AnchoredPosition: {x: 6, y: 0.5}
   m_SizeDelta: {x: 106.08209, y: 163.38}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1913581001
@@ -3871,7 +3925,7 @@ GameObject:
   - component: {fileID: 2109064975}
   m_Layer: 5
   m_Name: Potion
-  m_TagString: Untagged
+  m_TagString: Store Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3948,6 +4002,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardTypeID: 3
   _roomPrefab: {fileID: 1631945223831103160, guid: 8f7b40a17ead48c47a2c90d735bd3bed, type: 3}
+  _currentGold: 0
 --- !u!50 &2109064975
 Rigidbody2D:
   serializedVersion: 4
@@ -4076,7 +4131,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2218130120788041819, guid: 24f079b0e7fc24b5ebfea7d097d4070c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -3.5
+      value: -4.5
       objectReference: {fileID: 0}
     - target: {fileID: 2218130120788041819, guid: 24f079b0e7fc24b5ebfea7d097d4070c, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4142,18 +4197,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5826416513499646022, guid: 24f079b0e7fc24b5ebfea7d097d4070c, type: 3}
-      propertyPath: m_SortingLayer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5826416513499646022, guid: 24f079b0e7fc24b5ebfea7d097d4070c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5826416513499646022, guid: 24f079b0e7fc24b5ebfea7d097d4070c, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24f079b0e7fc24b5ebfea7d097d4070c, type: 3}
 --- !u!1001 &3672887160696384323
@@ -4185,7 +4228,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3672887160216226913, guid: 371544904d9b3f34992e129322b08994, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.5
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 3672887160216226913, guid: 371544904d9b3f34992e129322b08994, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4229,7 +4272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3672887160216226915, guid: 371544904d9b3f34992e129322b08994, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 371544904d9b3f34992e129322b08994, type: 3}

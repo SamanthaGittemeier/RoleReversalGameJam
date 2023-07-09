@@ -8,6 +8,7 @@ TagManager:
   - Slot
   - Card
   - Hero
+  - Store Item
   layers:
   - Default
   - TransparentFX
