@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class InventorySlot : MonoBehaviour, IDropHandler
+public class InventorySlot : MonoBehaviour
 {
     [SerializeField]
     private TMP_Text _grabText;
@@ -12,15 +12,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     private void Start()
     {
         _grabText.gameObject.SetActive(false);
-    }
-
-    public void OnDrop(PointerEventData eventData)
-    {
-        if (transform.childCount == 0)
-        {
-            GameObject dropped = eventData.pointerDrag;
-            DraggableCard draggableCard = dropped.GetComponent<DraggableCard>();
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -28,6 +28,8 @@ public class DraggableCard : MonoBehaviour //IBeginDragHandler, IDragHandler, IE
 
     [SerializeField]
     private bool _isPressed;
+    [SerializeField]
+    private bool _isTimerGoing;
 
     [SerializeField]
     private Vector3 _offset;
@@ -37,6 +39,9 @@ public class DraggableCard : MonoBehaviour //IBeginDragHandler, IDragHandler, IE
 
     [SerializeField]
     private string _heroIDText;
+
+    [SerializeField]
+    private Timer _timer;
 
     private void Start()
     {
@@ -61,6 +66,11 @@ public class DraggableCard : MonoBehaviour //IBeginDragHandler, IDragHandler, IE
                 Destroy(this.gameObject);
             }
         }
+    }
+
+    public void TimerGoing(bool _isGoing)
+    {
+        _isTimerGoing = _isGoing;
     }
 
     public void AssignCardID(int _storeID)
@@ -104,16 +114,28 @@ public class DraggableCard : MonoBehaviour //IBeginDragHandler, IDragHandler, IE
 
     public void OnMouseDown()
     {
-        _isPressed = true;
-        Debug.Log("I PrEsSeD iT");
+        if (_isTimerGoing == true)
+        {
+            _isPressed = true;
+            Debug.Log("I PrEsSeD iT");
+        }
+        //_isPressed = true;
+        //Debug.Log("I PrEsSeD iT");
     }
 
-    private void OnMouseUp()
+    public void OnMouseUp()
     {
         _isPressed = false;
         Debug.Log("I lEt Go");
-        transform.position = parentAfterDrag.position;
-        _roomHealthText.gameObject.SetActive(true);
+        if (parentAfterDrag != null)
+        {
+            transform.position = parentAfterDrag.position;
+            _roomHealthText.gameObject.SetActive(true);
+        }
+        else if (parentAfterDrag == null)
+        {
+            transform.position = transform.position;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

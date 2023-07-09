@@ -18,6 +18,15 @@ public class Timer : MonoBehaviour
     [SerializeField]
     private float _timerDelay;
 
+    [SerializeField]
+    private bool _isTimerStillGoing;
+
+    [SerializeField]
+    private GameObject[] _cards;
+
+    [SerializeField]
+    private GameObject[] _store;
+
     private void Start()
     {
         _timerText = GameObject.Find("TimerText").GetComponent<TMP_Text>();
@@ -25,6 +34,8 @@ public class Timer : MonoBehaviour
         _timerSecs = 31;
         _waitOneSecond = 1;
         _timerDelay = -1;
+        _cards = GameObject.FindGameObjectsWithTag("Card");
+        _store = GameObject.FindGameObjectsWithTag("Store Item");
     }
 
     private void Update()
@@ -39,12 +50,32 @@ public class Timer : MonoBehaviour
             if (_timerSecs <= 0)
             {
                 _timerMins = 0;
-                _timerSecs = 60;
+                _timerSecs = 0;
+                _isTimerStillGoing = false;
+                foreach (GameObject C in _cards)
+                {
+                    //C.GetComponent<DraggableCard>().TimerGoing(_isTimerStillGoing);
+                    C.GetComponent<DraggableCard>().OnMouseUp();
+                }
+                foreach (GameObject SI in _store)
+                {
+                    SI.GetComponent<Store>().IsTimerGoing(_isTimerStillGoing);
+                }
             }
             else if (_timerSecs > 0)
             {
                 _timerSecs--;
                 _timerDelay = Time.time + _waitOneSecond;
+                _isTimerStillGoing = true;
+                foreach (GameObject C in _cards)
+                {
+                    //C.GetComponent<DraggableCard>().TimerGoing(_isTimerStillGoing);
+                    C.GetComponent<DraggableCard>().OnMouseDown();
+                }
+                foreach (GameObject SI in _store)
+                {
+                    SI.GetComponent<Store>().IsTimerGoing(_isTimerStillGoing);
+                }
             }
         }
 

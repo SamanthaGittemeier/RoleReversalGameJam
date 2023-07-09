@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour
     {
         _goldText = GameObject.Find("CoinText").GetComponent<TMP_Text>();
         _scoreText = GameObject.Find("Score Text").GetComponent<TMP_Text>();
-        
     }
 
     // Update is called once per frame

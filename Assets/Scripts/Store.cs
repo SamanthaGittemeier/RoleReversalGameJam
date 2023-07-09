@@ -6,12 +6,16 @@ public class Store : MonoBehaviour
 {
     [SerializeField]
     private int _cardTypeID;
+    [SerializeField]
+    private int _currentGold;
+    [SerializeField]
+    private int _timer;
 
     [SerializeField]
     private GameObject _roomPrefab;
 
     [SerializeField]
-    private int _currentGold;
+    private bool _timerIsGoing;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +29,11 @@ public class Store : MonoBehaviour
         
     }
 
+    public void IsTimerGoing(bool _isTimerStillCounting)
+    {
+        _timerIsGoing = _isTimerStillCounting;
+    }
+
     public void UpdateGold(int _goldAmount)
     {
         _currentGold = _goldAmount;
@@ -32,8 +41,12 @@ public class Store : MonoBehaviour
 
     private void OnMouseDown()
     {
-        GameObject _newRoom = Instantiate(_roomPrefab, transform.position, Quaternion.identity);
-        _newRoom.GetComponent<DraggableCard>().AssignCardID(_cardTypeID);
-        _newRoom.GetComponent<DraggableCard>().OnMouseDown();
+        if (_timerIsGoing == true)
+        {
+            GameObject _newRoom = Instantiate(_roomPrefab, transform.position, Quaternion.identity);
+            _newRoom.GetComponent<DraggableCard>().TimerGoing(_timerIsGoing);
+            _newRoom.GetComponent<DraggableCard>().AssignCardID(_cardTypeID);
+            _newRoom.GetComponent<DraggableCard>().OnMouseDown();
+        }
     }
 }
