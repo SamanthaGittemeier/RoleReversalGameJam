@@ -103,6 +103,7 @@ public class Hero : MonoBehaviour
             _heroSpeed = 0;
             Debug.Log("At Boss");
             _boss.TakeDamage(_heroHealth);
+            //Destroy(this.gameObject, 2.5f);
         }
     }
 }
